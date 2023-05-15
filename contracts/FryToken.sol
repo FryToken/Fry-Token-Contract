@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.17;
+pragma solidity 0.8.17;
 
 interface IUniswapV2Factory {
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
@@ -641,7 +641,7 @@ contract FryToken is ERC20, Ownable {
         }
 
         uint256 _totalFees;
-        if (_isWhitelistTransfer[from] || _isWhitelistTransfer[to]) {
+        if (_isWhitelistTransfer[from] || _isWhitelistTransfer[to] || swapping) {
             _totalFees = 0;
         } else if (from == uniswapV2Pair) {
             _totalFees = marketingFeeOnBuy;
