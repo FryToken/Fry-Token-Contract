@@ -695,7 +695,6 @@ contract FryToken is ERC20, Ownable {
         uint256 newBalance = address(this).balance - initialBalance;
 
         (bool success, ) = marketingWallet.call{value: newBalance}("");
-        require(success, "transfer marketing fee fail");
 
         emit SwapAndSendMarketing(tokenAmount, newBalance);
     }
